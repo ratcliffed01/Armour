@@ -1,0 +1,93 @@
+
+<html>
+<head>
+    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=MacRoman">
+</head>
+
+<body>
+<script type="application/javascript">
+
+    function refreshMessageQueue(yy) {
+
+	var url = "http://localhost:8080/?"+yy;
+
+        var xhr1 = getXmlHttpRequest();
+        xmlHttp1.onreadystatechange = function () {
+            if (xmlHttp1.readyState == 4) {
+                alert(xhr.responseText);
+		delete xhr1;
+            }
+        };
+        xhr1.open("POST", url, false);
+        xhr1.send(yy);
+
+    }
+
+    //==============================================
+    function senduser() {
+
+	var name = document.getElementById("userid").value;
+	var pwd = document.getElementById("passwd").value;
+
+	//alert(input+" il="+input.length);
+
+	var yy = "name="+name+"?password="+pwd;
+
+	var xhr = new XMLHttpRequest();
+
+	var url = "http://localhost:8080/?"+yy;
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                alert(xhr.responseText);
+	    }
+        }
+	//alert("opencanvbarchart - post yy="+yy+" url="+url);
+	xhr.open('POST',url,true);
+        xhr.send(yy);
+
+	//ie tends to lock up 10% of the time and can take 30mins to clear, this timeout resets
+	//the lock and sends the message again.
+        var cti = setTimeout (refreshMessageQueue.bind(null,yy), 4000);
+
+}
+
+</script>
+
+<form name="form3">
+
+<table align="centre" width="100%">
+	<tr>
+	     <td width="13%" align="centre">
+		<br/>
+ 		<span class="greytxt"> Username : </span>
+ 		<span class="greytxt">
+			<input id="userid" name="name" type="text" value=""></input>
+		</span>
+	     </td>
+	</tr>
+	<tr>
+	     <td width="13%" align="centre">
+		<br/>
+ 		<span class="greytxt"> Password : </span>
+ 		<span class="greytxt">
+			<input id="passwd" name="passwd" type="password" value=""></input>
+		</span>
+	     </td>
+	</tr>
+	<tr>
+	     <td width="13%" align="centre">
+		<br/>
+ 		<span class="greytxt">
+			<button type="button" onclick="senduser()">SUBMIT</button>
+		</span>
+	     </td>
+	</tr>
+    </tr>
+</table>
+
+</form>
+</body>
+
+</html>

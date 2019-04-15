@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<davefish1>
+   	<caption>Paths</caption>
+	<xmlpath>xml</xmlpath>
+	<htmlpath>html</htmlpath>
+	<datapath>data</datapath>
+	<tmppath>tmp</tmppath>
+	<name>David Ratcliffe</name>
+	<username>ratcliffed01</username>
+	<password>daver</password>
+</davefish1>
